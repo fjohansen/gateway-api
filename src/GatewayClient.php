@@ -129,7 +129,8 @@ class GatewayClient
             throw new ParameterException("Missing or invalid parameter 'message'");
         }
 
-        $client = (new self())
+        $secret = getenv('SMS_API_TOKEN');
+        $client = (new self($secret))
             ->setSender($sender)
             ->setRecipients($recipients)
             ->setMessage($message);
